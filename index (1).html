@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#020713">
+<title>SocialHub • Premium Links</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#020612;--blue:#08cfff;--violet:#8d36ff;--pink:#ef27ff;--muted:#98a9d4}
+html{scroll-behavior:smooth}
+body{
+ margin:0;background:
+ radial-gradient(700px 360px at 4% 25%,#071b48 0,transparent 65%),
+ radial-gradient(620px 390px at 100% 18%,#250b4c 0,transparent 65%),
+ radial-gradient(700px 420px at 50% 100%,#16042b 0,transparent 70%),#020612;
+ color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+ -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:linear-gradient(#5685ff08 1px,transparent 1px),linear-gradient(90deg,#5685ff08 1px,transparent 1px);background-size:44px 44px}
+.page{width:min(980px,94%);margin:auto;padding:16px 0 36px;position:relative;z-index:1}
+
+/* Header — same visual proportion as reference */
+.header{
+ height:78px;border:1px solid #1b74d8;border-radius:42px;padding:8px 14px 8px 28px;
+ display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;
+ background:linear-gradient(180deg,#080f25ed,#030817e8);
+ box-shadow:inset 0 1px #ffffff12,0 0 35px #087bff1c;
+}
+.header:before{content:"";position:absolute;left:26%;right:26%;top:-1px;height:2px;background:linear-gradient(90deg,transparent,#00d9ff,#5568ff,#00d9ff,transparent);box-shadow:0 0 18px #00cfff}
+.brand{display:flex;align-items:center;gap:13px}
+.brandmark{
+ width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-size:30px;font-weight:1000;
+ background:linear-gradient(145deg,#13d8ff,#6142ff 55%,#f02be6);box-shadow:inset 2px 2px 8px #fff7,inset -6px -7px 12px #0009,0 0 25px #5b4cff55;
+}
+.brand h1{margin:0;font-size:29px;letter-spacing:-1.2px}.brand h1 span{background:linear-gradient(90deg,#fff,#9fb3ff,#13d9ff);-webkit-background-clip:text;color:transparent}
+.brand small{display:block;color:#91a1c9;font-size:13px;margin-top:4px}
+.headBtns{display:flex;gap:10px}.round{
+ width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:27px;
+ background:linear-gradient(145deg,#15254b,#060b1b);border:1px solid #315184;
+ box-shadow:inset 2px 2px 8px #fff1,inset -6px -7px 12px #0009,0 8px 20px #0007;
+}
+
+/* HERO: desktop reference banner */
+.hero{
+ min-height:330px;display:grid;grid-template-columns:350px 1fr;align-items:center;gap:28px;
+ padding:25px 24px 22px;position:relative;
+}
+.hero:after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#167bff,#9b39ff,#167bff,transparent);box-shadow:0 0 12px #187cff}
+.heroArt{height:280px;display:grid;place-items:center;position:relative}
+.orbit{position:absolute;width:270px;height:90px;border:4px solid #087cff;border-radius:50%;transform:rotate(-20deg);box-shadow:0 0 28px #008bff,0 0 60px #008bff44}
+.orbit.p{width:250px;border-color:#d82cff;transform:rotate(23deg);box-shadow:0 0 28px #d82cff,0 0 60px #d82cff44}
+.logo3d{
+ width:190px;height:190px;border-radius:43px;display:grid;place-items:center;font-size:104px;font-weight:1000;
+ color:#08d8ff;transform:rotate(-6deg);
+ background:linear-gradient(145deg,#12264b,#060a18);border:1px solid #b9d9ff7a;
+ box-shadow:inset 7px 7px 16px #fff1,inset -15px -16px 26px #000d,0 0 32px #1685ff66,0 0 65px #b92cff33;
+ text-shadow:0 0 25px #765cff;
+}
+.heroCopy{text-align:left}.welcome{
+ display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:22px;
+ border:1px solid #137dff;background:#061633dd;color:#bca4ff;font-weight:900;font-size:12px;letter-spacing:1.5px;
+ box-shadow:0 0 22px #207aff22
+}
+.heroCopy h2{font-size:76px;line-height:.96;letter-spacing:-4px;margin:18px 0 14px}
+.heroCopy h2 span{background:linear-gradient(90deg,#fff,#d8d8ff 42%,#11d9ff 84%);-webkit-background-clip:text;color:transparent}
+.heroCopy p{margin:0;max-width:590px;color:#9aadd7;font-size:17px;line-height:1.55}
+
+/* links */
+.section{padding-top:29px}.sectionHead{display:flex;align-items:center;gap:17px;margin:0 4px 18px}.people{font-size:38px;filter:drop-shadow(0 0 9px #0797ff)}
+.sectionHead h3{font-size:26px;margin:0}.sectionHead p{margin:3px 0 0;color:#8e9dc3;font-size:14px}.rule{height:2px;flex:1;background:linear-gradient(90deg,#9d43ff,transparent);box-shadow:0 0 10px #9d43ff}
+.cards{display:flex;flex-direction:column;gap:18px}
+.card{
+ --a:#06d5ff;--b:#4a45ff;--glow:#00aaff55;
+ min-height:145px;border-radius:31px;padding:18px 26px 18px 48px;display:flex;align-items:center;gap:28px;position:relative;overflow:hidden;
+ background:linear-gradient(100deg,#06182fdc,#090d21ef 54%,#071022df);
+ border:1px solid #ffffff16;box-shadow:inset 1px 1px #fff1,inset -9px -10px 18px #000a,0 18px 42px #0008,0 0 30px var(--glow);
+ transition:transform .16s ease;
+}
+.card:before{content:"";position:absolute;inset:0;border-radius:31px;padding:2px;background:linear-gradient(105deg,var(--a),transparent 28%,transparent 70%,var(--b));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:drop-shadow(0 0 7px var(--a))}
+.card:hover{transform:translateY(-2px)}
+.icon{
+ width:106px;height:106px;flex:0 0 106px;border-radius:29px;display:grid;place-items:center;position:relative;
+ background:linear-gradient(145deg,#142e53,#070b1b);border:1px solid #ffffff1a;
+ box-shadow:inset 5px 5px 11px #fff0b,inset -9px -10px 17px #000c,0 11px 28px #000b
+}
+.icon:after{content:"";position:absolute;inset:-5px;border-radius:33px;border:2px solid transparent;border-top-color:var(--a);border-right-color:var(--b);filter:drop-shadow(0 0 8px var(--a));animation:spin 5s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.icon svg{width:74px;height:74px;filter:drop-shadow(0 7px 7px #000b)}
+.info{flex:1;min-width:0}.title{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.title h4{font-size:25px;margin:0}.badge{padding:6px 11px;border-radius:20px;font-size:10px;font-weight:900;background:linear-gradient(90deg,var(--a),var(--b));box-shadow:0 0 15px var(--glow)}
+.info p{margin:8px 0 10px;color:#86a3d5;font-size:15px}.stats{font-size:12px;color:#8e9abd}.stats b{color:#b9c5e3}
+.arrow{
+ width:72px;height:72px;flex:0 0 72px;border-radius:50%;display:grid;place-items:center;text-decoration:none;color:white;font-size:41px;
+ background:linear-gradient(145deg,var(--a),var(--b));box-shadow:inset 4px 4px 9px #fff3,inset -7px -8px 12px #0004,0 10px 28px var(--glow)
+}
+
+/* footer support */
+.support{
+ margin-top:19px;border-radius:29px;padding:18px 22px;display:flex;align-items:center;gap:17px;
+ background:linear-gradient(100deg,#190b3dcc,#0b1028ee);border:1px solid #a443ff55;box-shadow:inset 0 1px #fff1,0 16px 36px #0008
+}
+.supportIcon{width:66px;height:66px;flex:0 0 66px;border-radius:20px;display:grid;place-items:center;font-size:31px;background:linear-gradient(145deg,#7e31ff,#26105b);box-shadow:inset 3px 3px 7px #fff2,inset -6px -6px 12px #0006,0 0 25px #8d35ff55}
+.supportText{flex:1}.supportText h4{margin:0;font-size:20px}.supportText p{margin:5px 0 0;color:#919cba;font-size:13px}.supportBtn{padding:12px 16px;border-radius:14px;text-decoration:none;color:#fff;font-size:12px;font-weight:900;background:linear-gradient(135deg,#7b3aed,#2563eb)}
+.vip{margin-top:17px;border-radius:29px;padding:18px 24px;display:flex;align-items:center;gap:17px;background:linear-gradient(100deg,#28105dcc,#100d27ee);border:1px solid #a943ff55;box-shadow:inset 0 1px #fff1,0 16px 36px #0008}
+.vipIcon{width:66px;height:66px;border-radius:20px;display:grid;place-items:center;background:#7228d255;font-size:33px}.vip h4{margin:0;font-size:19px}.vip p{margin:5px 0 0;color:#8e98b7;font-size:13px}
+footer{white-space:pre-line;text-align:center;margin-top:25px;padding-top:18px;border-top:1px solid #164a8b55;color:#68738f;font-size:11px;letter-spacing:1px;line-height:1.8}
+
+/* MOBILE: compact banner, no giant empty gap */
+@media(max-width:760px){
+ .page{width:92%;padding-top:14px}.header{height:65px;padding:7px 10px 7px 16px}.brandmark{width:45px;height:45px;font-size:27px}.brand h1{font-size:22px}.brand small{font-size:10px}.round{width:46px;height:46px;font-size:23px}
+ .hero{display:flex;flex-direction:column;min-height:0;padding:12px 0 23px;gap:5px;text-align:center}
+ .heroArt{height:177px;width:100%;margin:0}.logo3d{width:145px;height:145px;font-size:80px;border-radius:35px}.orbit{width:220px;height:73px}.orbit.p{width:204px}
+ .heroCopy{text-align:center;width:100%}.welcome{font-size:9px;padding:7px 13px;letter-spacing:1.25px}.heroCopy h2{font-size:49px;line-height:.98;letter-spacing:-3px;margin:13px 0 10px}.heroCopy p{font-size:13px;line-height:1.55;padding:0 10px}
+ .section{padding-top:22px}.sectionHead{gap:10px;margin-bottom:13px}.people{font-size:30px}.sectionHead h3{font-size:20px}.sectionHead p{font-size:10px}.rule{height:1px}
+ .cards{gap:13px}.card{min-height:115px;padding:11px 10px 11px 17px;gap:13px;border-radius:23px}.card:before{border-radius:23px}.icon{width:76px;height:76px;flex-basis:76px;border-radius:23px}.icon:after{border-radius:27px}.icon svg{width:52px;height:52px}.title{gap:6px}.title h4{font-size:16px}.badge{font-size:7px;padding:4px 7px}.info p{font-size:10px;margin:5px 0 6px;line-height:1.35}.stats{font-size:8.5px}.arrow{width:50px;height:50px;flex-basis:50px;font-size:30px}
+ .support{padding:13px;border-radius:23px;gap:10px}.supportIcon{width:50px;height:50px;flex-basis:50px;font-size:24px}.supportText h4{font-size:14px}.supportText p{font-size:9px}.supportBtn{padding:9px 11px;font-size:9px}.vip{padding:13px;border-radius:23px}.vipIcon{width:50px;height:50px;font-size:25px}.vip h4{font-size:14px}.vip p{font-size:9px}
+}
+@media(max-width:420px){
+ .heroArt{height:153px}.logo3d{width:122px;height:122px;font-size:67px;border-radius:30px}.orbit{width:188px;height:61px}.orbit.p{width:175px}.heroCopy h2{font-size:43px}
+ .card{min-height:104px;padding-left:12px;gap:9px}.icon{width:66px;height:66px;flex-basis:66px;border-radius:20px}.icon svg{width:45px;height:45px}.arrow{width:43px;height:43px;flex-basis:43px;font-size:25px}.title h4{font-size:14px}.info p{font-size:9px}.stats{font-size:7.7px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="header">
+ <div class="brand"><div class="brandmark">S</div><div><h1><span>SocialHub</span></h1><small>Link • Connect • Grow</small></div></div>
+ <div class="headBtns">
+  <div class="round" id="themeToggle" title="Theme">☾</div>
+  <a class="round" href="admin.html" title="Admin Panel" style="text-decoration:none;color:white">☰</a>
+</div>
+</header>
+
+<section class="hero">
+ <div class="heroArt"><div class="orbit"></div><div class="orbit p"></div><div class="logo3d">S</div></div>
+ <div class="heroCopy">
+  <div class="welcome">♛ &nbsp; WELCOME TO OUR WORLD</div>
+  <h2>Welcome to <span>SocialHub</span></h2>
+  <p>Stay connected with us for the latest updates, exclusive content and more. 🚀</p>
+ </div>
+</section>
+
+<section class="section">
+ <div class="sectionHead"><div class="people">👥</div><div><h3>Our Official Links</h3><p>Join our community and stay connected</p></div><div class="rule"></div></div>
+ <div class="cards">
+
+  <article class="card" style="--a:#05d7ff;--b:#5141ff;--glow:#00aaff55">
+   <div class="icon"><svg viewBox="0 0 100 100"><defs><linearGradient id="t1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#39d8ff"/><stop offset="1" stop-color="#1688ef"/></linearGradient></defs><rect x="7" y="7" width="86" height="86" rx="27" fill="url(#t1)"/><path d="M20 48 79 23c4-2 7 1 5 6L68 76c-1 4-4 5-7 3L45 66l-9 8c-2 2-4 1-4-2l2-12-13-7c-3-2-3-4-1-5Z" fill="#fff"/><path d="m43 61 29-27-35 22Z" fill="#b9edff"/></svg></div>
+   <div class="info"><div class="title"><h4>Telegram Channel 1</h4><span class="badge">Official</span></div><p>Get the latest updates, news and exclusive content.</p><div class="stats">♟ 12.5K Members　│　🔗 <b>Join Now</b></div></div>
+   <a class="arrow" href="https://t.me/yourchannel" target="_blank" rel="noopener">→</a>
+  </article>
+
+  <article class="card" style="--a:#bd39ff;--b:#f125ff;--glow:#c52cff55">
+   <div class="icon"><svg viewBox="0 0 100 100"><rect x="7" y="7" width="86" height="86" rx="27" fill="#743dff"/><path d="M20 48 79 23c4-2 7 1 5 6L68 76c-1 4-4 5-7 3L45 66l-9 8c-2 2-4 1-4-2l2-12-13-7c-3-2-3-4-1-5Z" fill="#fff"/></svg></div>
+   <div class="info"><div class="title"><h4>Telegram Channel 2</h4><span class="badge">Official</span></div><p>Tech, Tricks, Tools & More — Stay Ahead!</p><div class="stats">♟ 8.7K Members　│　🔗 <b>Join Now</b></div></div>
+   <a class="arrow" href="https://t.me/yourgroup" target="_blank" rel="noopener">→</a>
+  </article>
+
+  <article class="card" style="--a:#ff2a4b;--b:#ff102d;--glow:#ff1f4055">
+   <div class="icon"><svg viewBox="0 0 100 100"><rect x="7" y="19" width="86" height="62" rx="22" fill="#ff2138"/><path d="M43 33 71 50 43 67Z" fill="#fff"/></svg></div>
+   <div class="info"><div class="title"><h4>YouTube Channel</h4><span class="badge">Official</span></div><p>Watch tutorials, vlogs and amazing content.</p><div class="stats">● 45.2K Subscribers　│　🔗 <b>Subscribe</b></div></div>
+   <a class="arrow" href="https://youtube.com/" target="_blank" rel="noopener">→</a>
+  </article>
+
+  <article class="card" style="--a:#ffc329;--b:#ff7200;--glow:#ff9d1f55">
+   <div class="icon"><svg viewBox="0 0 100 100"><rect x="7" y="7" width="86" height="86" rx="27" fill="#12223d"/><text x="50" y="65" text-anchor="middle" font-size="47">🚀</text></svg></div>
+   <div class="info"><div class="title"><h4>SMM Panel</h4><span class="badge">Premium</span></div><p>Get social media services — Fast & Reliable.</p><div class="stats">★ Best Price　│　🔗 <b>Visit Now</b></div></div>
+   <a class="arrow" href="https://example.com/" target="_blank" rel="noopener">→</a>
+  </article>
+
+  <article class="card" style="--a:#a93cff;--b:#ee25ff;--glow:#bd31ff55">
+   <div class="icon"><svg viewBox="0 0 100 100"><rect x="7" y="7" width="86" height="86" rx="27" fill="#6824d5"/><text x="50" y="65" text-anchor="middle" font-size="47" fill="#fff">♛</text></svg></div>
+   <div class="info"><div class="title"><h4>VIP • One Place, All Links</h4><span class="badge">Exclusive</span></div><p>All our links in one place — Stay connected.</p><div class="stats">🔗 Quick Access　│　🔗 <b>Explore</b></div></div>
+   <a class="arrow" href="#support">→</a>
+  </article>
+ </div>
+</section>
+
+<section class="section" id="support">
+ <div class="sectionHead"><div class="people">♕</div><div><h3>Official Support</h3><p>Need help? Message the Owner directly.</p></div><div class="rule"></div></div>
+ <div class="support"><div class="supportIcon">♕</div><div class="supportText"><h4>Owner / Official Support</h4><p>সরাসরি Owner-এর সাথে যোগাযোগ করতে নিচের বাটনে মেসেজ করুন।</p></div><a class="supportBtn" href="https://t.me/yourownerid" target="_blank" rel="noopener">Message Owner ↗</a></div>
+ <div class="vip"><div class="vipIcon">♛</div><div><h4>VIP • One Place, All Links</h4><p>Official links only — stay connected.</p></div></div>
+</section>
+
+<footer>♛　© 2026 SocialHub • Premium Links　♛<br>STAY CONNECTED • STAY AHEAD</footer>
+</div>
+
+<script>
+(function(){
+  const DEFAULTS = {
+    brandName: "SocialHub",
+    tagline: "Link • Connect • Grow",
+    welcomeBadge: "WELCOME TO OUR WORLD",
+    welcomeTitle: "Welcome to SocialHub",
+    description: "Stay connected with us for the latest updates, exclusive content and more. 🚀",
+    linksTitle: "Our Official Links",
+    linksSubtitle: "Join our community and stay connected",
+    ownerTitle: "Owner / Official Support",
+    ownerDescription: "সরাসরি Owner-এর সাথে যোগাযোগ করতে নিচের বাটনে মেসেজ করুন।",
+    ownerButton: "Message Owner ↗",
+    ownerLink: "https://t.me/yourownerid",
+    footer: "♛　© 2026 SocialHub • Premium Links　♛",
+    footerSub: "STAY CONNECTED • STAY AHEAD",
+    cards: [
+      {title:"Telegram Channel 1", badge:"Official", description:"Get the latest updates, news and exclusive content.", stats:"♟ 12.5K Members　│　🔗 Join Now", link:"https://t.me/yourchannel"},
+      {title:"Telegram Channel 2", badge:"Official", description:"Tech, Tricks, Tools & More — Stay Ahead!", stats:"♟ 8.7K Members　│　🔗 Join Now", link:"https://t.me/yourgroup"},
+      {title:"YouTube Channel", badge:"Official", description:"Watch tutorials, vlogs and amazing content.", stats:"● 45.2K Subscribers　│　🔗 Subscribe", link:"https://youtube.com/"},
+      {title:"SMM Panel", badge:"Premium", description:"Get social media services — Fast & Reliable.", stats:"★ Best Price　│　🔗 Visit Now", link:"https://example.com/"},
+      {title:"VIP • One Place, All Links", badge:"Exclusive", description:"All our links in one place — Stay connected.", stats:"🔗 Quick Access　│　🔗 Explore", link:"#support"}
+    ]
+  };
+
+  const saved = localStorage.getItem("socialhub_config");
+  let cfg;
+  try { cfg = saved ? Object.assign({}, DEFAULTS, JSON.parse(saved)) : DEFAULTS; }
+  catch(e){ cfg = DEFAULTS; }
+
+  const setText = (sel, value) => { const el=document.querySelector(sel); if(el) el.textContent=value; };
+  setText(".brand h1 span", cfg.brandName);
+  setText(".brand small", cfg.tagline);
+  setText(".welcome", "♛  " + cfg.welcomeBadge);
+  setText(".heroCopy h2", cfg.welcomeTitle);
+  setText(".heroCopy p", cfg.description);
+  setText(".sectionHead h3", cfg.linksTitle);
+  setText(".sectionHead p", cfg.linksSubtitle);
+  setText(".supportText h4", cfg.ownerTitle);
+  setText(".supportText p", cfg.ownerDescription);
+  setText(".supportBtn", cfg.ownerButton);
+  const owner = document.querySelector(".supportBtn"); if(owner) owner.href = cfg.ownerLink;
+  setText("footer", cfg.footer + "\n" + cfg.footerSub);
+
+  document.querySelectorAll(".cards .card").forEach((card,i)=>{
+    const c=cfg.cards[i]; if(!c) return;
+    const h=card.querySelector(".title h4"), b=card.querySelector(".badge"), p=card.querySelector(".info p"), st=card.querySelector(".stats"), a=card.querySelector(".arrow");
+    if(h) h.textContent=c.title;
+    if(b) b.textContent=c.badge;
+    if(p) p.textContent=c.description;
+    if(st){
+      const parts=(c.stats||"").split("│");
+      st.innerHTML = (parts[0]||"") + (parts.length>1 ? "　│　🔗 <b>"+parts.slice(1).join("│").trim()+"</b>" : "");
+    }
+    if(a){ a.href=c.link||"#"; a.target="_blank"; a.rel="noopener"; }
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  document.querySelectorAll(".cards .card").forEach(function(card){
+    const link = card.querySelector(".arrow");
+    if(!link) return;
+    card.setAttribute("role","link");
+    card.setAttribute("tabindex","0");
+    card.style.cursor="pointer";
+
+    function openLink(){
+      const url = link.getAttribute("href");
+      if(!url || url === "#") return;
+      if(url.startsWith("#")){
+        const target=document.querySelector(url);
+        if(target) target.scrollIntoView({behavior:"smooth"});
+        return;
+      }
+      window.open(url, "_blank", "noopener");
+    }
+    card.addEventListener("click", function(e){
+      if(e.target.closest("a")) return;
+      openLink();
+    });
+    card.addEventListener("keydown", function(e){
+      if(e.key==="Enter" || e.key===" "){
+        e.preventDefault();
+        openLink();
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
