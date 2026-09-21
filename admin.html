@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050816">
+<title>SocialHub • Admin Panel</title>
+<style>
+*{box-sizing:border-box} :root{--bg:#030611;--panel:#081022;--panel2:#0c1530;--line:#18345e;--cyan:#08d8ff;--violet:#8d36ff;--pink:#ef27ff;--muted:#91a4cf}
+body{margin:0;background:radial-gradient(700px 400px at 0 0,#0a2255 0,transparent 60%),radial-gradient(700px 400px at 100% 20%,#270b4d 0,transparent 62%),#030611;color:#fff;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:linear-gradient(#5685ff08 1px,transparent 1px),linear-gradient(90deg,#5685ff08 1px,transparent 1px);background-size:42px 42px}
+.wrap{width:min(1120px,94%);margin:auto;position:relative;z-index:1;padding:22px 0 50px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 18px;border:1px solid #1c6fd2;border-radius:24px;background:linear-gradient(180deg,#0a142bde,#040a18ed);box-shadow:0 15px 45px #0008,inset 0 1px #fff1}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:50px;height:50px;border-radius:16px;display:grid;place-items:center;font-size:28px;font-weight:1000;background:linear-gradient(145deg,#13d8ff,#6142ff 55%,#f02be6);box-shadow:0 0 28px #5b4cff55}.brand h1{margin:0;font-size:22px}.brand p{margin:3px 0 0;color:#8fa3cc;font-size:11px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid #2c4f82;background:#0b1731;color:#fff;padding:10px 14px;border-radius:12px;font-weight:800;cursor:pointer;text-decoration:none}.primary{background:linear-gradient(135deg,#06cfff,#673cff);border:0}.danger{border-color:#7e2d4d;background:#2a0e1d}
+.grid{display:grid;grid-template-columns:280px 1fr;gap:18px;margin-top:18px}.side,.main{border:1px solid #18345e;border-radius:24px;background:linear-gradient(180deg,#081022e8,#050b19ee);box-shadow:0 18px 50px #0008,inset 0 1px #fff1}.side{padding:15px;height:max-content;position:sticky;top:15px}.nav{display:flex;flex-direction:column;gap:8px}.nav button{text-align:left;padding:13px;border:1px solid transparent;border-radius:13px;background:transparent;color:#b9c8e8;cursor:pointer;font-weight:800}.nav button.active,.nav button:hover{background:#0d1d3b;border-color:#245a9e;color:#fff}.main{padding:20px}.section{display:none}.section.active{display:block}.head{margin-bottom:16px}.head h2{margin:0;font-size:25px}.head p{margin:5px 0;color:var(--muted);font-size:13px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#91a4cf;font-weight:800;text-transform:uppercase;letter-spacing:.6px}.field input,.field textarea{width:100%;border:1px solid #1a3864;background:#050c1b;color:#fff;border-radius:12px;padding:12px 13px;outline:none;font:inherit}.field input:focus,.field textarea:focus{border-color:#14cfff;box-shadow:0 0 0 3px #14cfff15}.field textarea{min-height:88px;resize:vertical}.cardEditor{border:1px solid #1a3864;border-radius:18px;padding:15px;margin-bottom:13px;background:#071025}.cardTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.cardTop h3{margin:0;font-size:15px}.mini{font-size:10px;color:#6f84ae}.savebar{position:sticky;bottom:10px;margin-top:18px;padding:12px;border:1px solid #235086;border-radius:17px;background:#050b19ee;display:flex;justify-content:space-between;align-items:center;gap:10px;backdrop-filter:blur(12px)}.status{font-size:11px;color:#85a2d4}.preview{width:100%;height:480px;border:1px solid #18345e;border-radius:18px;background:#020612}.notice{padding:12px;border:1px solid #254879;background:#07152b;border-radius:13px;color:#9db3dc;font-size:12px;line-height:1.6;margin-bottom:15px}.login{max-width:430px;margin:12vh auto;padding:28px;border:1px solid #1c6fd2;border-radius:26px;background:#071023ee;box-shadow:0 25px 80px #0009}.login h2{margin:0 0 6px}.login p{color:#91a4cf;font-size:13px}.login .field{margin:14px 0}.error{color:#ff7297;font-size:12px;min-height:18px}@media(max-width:800px){.grid{grid-template-columns:1fr}.side{position:static}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.top{align-items:flex-start}.actions{justify-content:flex-end}}
+</style>
+</head>
+<body>
+<div id="loginView" class="wrap">
+  <div class="login">
+    <div class="brand"><div class="logo">S</div><div><h2>Admin Control</h2><p>SocialHub Premium Management</p></div></div>
+    <div class="field"><label>Admin Password</label><input id="password" type="password" placeholder="Enter password"></div>
+    <div id="loginError" class="error"></div>
+    <button class="btn primary" style="width:100%" onclick="login()">Enter Admin Panel →</button>
+    <p style="font-size:10px;margin-top:15px">Default password: <b>1234</b>. Change it from Security after login.</p>
+  </div>
+</div>
+
+<div id="app" class="wrap" style="display:none">
+  <header class="top">
+    <div class="brand"><div class="logo">S</div><div><h1 id="topName">SocialHub</h1><p>Premium Admin Control Center</p></div></div>
+    <div class="actions"><a class="btn" href="index.html" target="_blank">View Website ↗</a><button class="btn danger" onclick="logout()">Logout</button></div>
+  </header>
+
+  <div class="grid">
+    <aside class="side">
+      <div class="nav">
+        <button class="active" data-tab="general">⚙️ General Settings</button>
+        <button data-tab="links">🔗 Link Management</button>
+        <button data-tab="support">♛ Owner & Support</button>
+        <button data-tab="security">🔐 Security</button>
+        <button data-tab="preview">👁️ Live Preview</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section id="general" class="section active">
+        <div class="head"><h2>General Settings</h2><p>Website name, welcome text and footer এখান থেকেই পরিবর্তন করুন।</p></div>
+        <div class="formgrid">
+          <div class="field"><label>Website Name</label><input id="brandName"></div>
+          <div class="field"><label>Tagline</label><input id="tagline"></div>
+          <div class="field"><label>Welcome Badge</label><input id="welcomeBadge"></div>
+          <div class="field"><label>Welcome Title</label><input id="welcomeTitle"></div>
+          <div class="field full"><label>Main Description</label><textarea id="description"></textarea></div>
+          <div class="field"><label>Links Section Title</label><input id="linksTitle"></div>
+          <div class="field"><label>Links Section Subtitle</label><input id="linksSubtitle"></div>
+          <div class="field"><label>Footer Line</label><input id="footer"></div>
+          <div class="field"><label>Footer Sub Line</label><input id="footerSub"></div>
+        </div>
+      </section>
+
+      <section id="links" class="section">
+        <div class="head"><h2>Link Management</h2><p>প্রতিটি কার্ডের নাম, badge, description, stats এবং direct URL পরিবর্তন করুন। Arrow/নাম—দুই জায়গা থেকেই একই link খুলবে।</p></div>
+        <div id="cardsEditor"></div>
+      </section>
+
+      <section id="support" class="section">
+        <div class="head"><h2>Owner & Support</h2><p>Owner name, description, button text এবং Telegram/website URL পরিবর্তন করুন।</p></div>
+        <div class="formgrid">
+          <div class="field"><label>Owner / Support Title</label><input id="ownerTitle"></div>
+          <div class="field"><label>Button Text</label><input id="ownerButton"></div>
+          <div class="field full"><label>Owner Description</label><textarea id="ownerDescription"></textarea></div>
+          <div class="field full"><label>Owner Link</label><input id="ownerLink" type="url" placeholder="https://t.me/yourusername"></div>
+        </div>
+      </section>
+
+      <section id="security" class="section">
+        <div class="head"><h2>Security</h2><p>Admin panel-এর local password পরিবর্তন করুন।</p></div>
+        <div class="notice">এটি একটি static HTML admin panel। Settings browser-এর <b>localStorage</b>-এ save হয়। Real online multi-user admin/security দরকার হলে backend/database লাগবে।</div>
+        <div class="formgrid">
+          <div class="field"><label>New Admin Password</label><input id="newPassword" type="password"></div>
+          <div class="field"><label>Confirm Password</label><input id="confirmPassword" type="password"></div>
+        </div>
+        <button class="btn primary" style="margin-top:15px" onclick="changePassword()">Update Password</button>
+      </section>
+
+      <section id="preview" class="section">
+        <div class="head"><h2>Live Preview</h2><p>Save করার পর website-এর বর্তমান design এখানে দেখুন।</p></div>
+        <iframe class="preview" id="previewFrame" src="index.html"></iframe>
+      </section>
+
+      <div class="savebar">
+        <div class="status" id="status">Changes are stored locally in this browser.</div>
+        <div class="actions"><button class="btn" onclick="resetConfig()">Reset Defaults</button><button class="btn primary" onclick="saveAll()">💾 Save Changes</button></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+const KEY="socialhub_config";
+const PASS="socialhub_admin_password";
+const DEFAULTS={
+ brandName:"SocialHub",tagline:"Link • Connect • Grow",welcomeBadge:"WELCOME TO OUR WORLD",
+ welcomeTitle:"Welcome to SocialHub",description:"Stay connected with us for the latest updates, exclusive content and more. 🚀",
+ linksTitle:"Our Official Links",linksSubtitle:"Join our community and stay connected",
+ ownerTitle:"Owner / Official Support",ownerDescription:"সরাসরি Owner-এর সাথে যোগাযোগ করতে নিচের বাটনে মেসেজ করুন।",
+ ownerButton:"Message Owner ↗",ownerLink:"https://t.me/yourownerid",
+ footer:"♛　© 2026 SocialHub • Premium Links　♛",footerSub:"STAY CONNECTED • STAY AHEAD",
+ cards:[
+  {title:"Telegram Channel 1",badge:"Official",description:"Get the latest updates, news and exclusive content.",stats:"♟ 12.5K Members　│　🔗 Join Now",link:"https://t.me/yourchannel"},
+  {title:"Telegram Channel 2",badge:"Official",description:"Tech, Tricks, Tools & More — Stay Ahead!",stats:"♟ 8.7K Members　│　🔗 Join Now",link:"https://t.me/yourgroup"},
+  {title:"YouTube Channel",badge:"Official",description:"Watch tutorials, vlogs and amazing content.",stats:"● 45.2K Subscribers　│　🔗 Subscribe",link:"https://youtube.com/"},
+  {title:"SMM Panel",badge:"Premium",description:"Get social media services — Fast & Reliable.",stats:"★ Best Price　│　🔗 Visit Now",link:"https://example.com/"},
+  {title:"VIP • One Place, All Links",badge:"Exclusive",description:"All our links in one place — Stay connected.",stats:"🔗 Quick Access　│　🔗 Explore",link:"#support"}
+ ]};
+
+let cfg=load();
+function load(){try{return Object.assign({},DEFAULTS,JSON.parse(localStorage.getItem(KEY)||"{}"));}catch(e){return JSON.parse(JSON.stringify(DEFAULTS));}}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function login(){
+ const entered=document.getElementById("password").value;
+ const saved=localStorage.getItem(PASS)||"1234";
+ if(entered===saved){sessionStorage.setItem("socialhub_admin","1");showApp();}
+ else document.getElementById("loginError").textContent="Incorrect password.";
+}
+function showApp(){document.getElementById("loginView").style.display="none";document.getElementById("app").style.display="block";render();}
+function logout(){sessionStorage.removeItem("socialhub_admin");location.reload();}
+if(sessionStorage.getItem("socialhub_admin")==="1") showApp();
+
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{
+ document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");
+ document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.getElementById(b.dataset.tab).classList.add("active");
+ if(b.dataset.tab==="preview") document.getElementById("previewFrame").src="index.html?preview="+Date.now();
+});
+
+function val(id){return document.getElementById(id).value}
+function set(id,v){document.getElementById(id).value=v??""}
+function render(){
+ document.getElementById("topName").textContent=cfg.brandName;
+ ["brandName","tagline","welcomeBadge","welcomeTitle","description","linksTitle","linksSubtitle","footer","footerSub","ownerTitle","ownerDescription","ownerButton","ownerLink"].forEach(k=>set(k,cfg[k]));
+ const box=document.getElementById("cardsEditor");box.innerHTML="";
+ cfg.cards.forEach((c,i)=>{
+   const d=document.createElement("div");d.className="cardEditor";
+   d.innerHTML=`<div class="cardTop"><h3>Link ${i+1} • ${escapeHtml(c.title)}</h3><span class="mini">DIRECT LINK</span></div>
+   <div class="formgrid">
+    <div class="field"><label>Name / Title</label><input data-i="${i}" data-k="title" value="${attr(c.title)}"></div>
+    <div class="field"><label>Badge</label><input data-i="${i}" data-k="badge" value="${attr(c.badge)}"></div>
+    <div class="field full"><label>Description</label><textarea data-i="${i}" data-k="description">${escapeHtml(c.description)}</textarea></div>
+    <div class="field"><label>Stats / Action Text</label><input data-i="${i}" data-k="stats" value="${attr(c.stats)}"></div>
+    <div class="field"><label>Link URL</label><input data-i="${i}" data-k="link" type="url" value="${attr(c.link)}"></div>
+   </div>`;
+   box.appendChild(d);
+ });
+ box.querySelectorAll("[data-k]").forEach(el=>el.oninput=()=>{cfg.cards[+el.dataset.i][el.dataset.k]=el.value;});
+}
+function attr(v){return String(v??"").replaceAll("&","&amp;").replaceAll('"',"&quot;").replaceAll("<","&lt;").replaceAll(">","&gt;")}
+function escapeHtml(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")}
+function saveAll(){
+ ["brandName","tagline","welcomeBadge","welcomeTitle","description","linksTitle","linksSubtitle","footer","footerSub","ownerTitle","ownerDescription","ownerButton","ownerLink"].forEach(k=>cfg[k]=val(k));
+ localStorage.setItem(KEY,JSON.stringify(cfg));
+ document.getElementById("status").textContent="✓ Saved successfully — refresh the website to see changes.";
+ document.getElementById("previewFrame").src="index.html?updated="+Date.now();
+ document.getElementById("topName").textContent=cfg.brandName;
+}
+function resetConfig(){
+ if(!confirm("Reset all website settings to default?"))return;
+ cfg=clone(DEFAULTS);localStorage.setItem(KEY,JSON.stringify(cfg));render();
+ document.getElementById("status").textContent="Defaults restored.";
+}
+function changePassword(){
+ const a=val("newPassword"),b=val("confirmPassword");
+ if(!a||a.length<4)return alert("Password must be at least 4 characters.");
+ if(a!==b)return alert("Passwords do not match.");
+ localStorage.setItem(PASS,a);set("newPassword","");set("confirmPassword","");
+ alert("Admin password updated.");
+}
+document.getElementById("password").addEventListener("keydown",e=>{if(e.key==="Enter")login()});
+</script>
+</body>
+</html>
