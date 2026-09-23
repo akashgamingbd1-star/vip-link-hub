@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXUS HOST — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body class="login-page">
+<div class="login-card">
+  <div class="brand-mark big">N</div>
+  <div class="eyebrow">PRIVATE BOT CLOUD</div>
+  <h1>Welcome back.</h1>
+  <p>Sign in to manage your Telegram bot fleet.</p>
+  {% with messages = get_flashed_messages(with_categories=true) %}{% for cat,msg in messages %}<div class="toast {{cat}}">{{msg}}</div>{% endfor %}{% endwith %}
+  <form method="post">
+    <label>Admin password</label>
+    <input name="password" type="password" placeholder="••••••••••" autofocus required>
+    <button class="primary wide">ENTER CONTROL CENTER <span>→</span></button>
+  </form>
+  <small class="muted">Change the default password in the environment before public deployment.</small>
+</div>
+</body></html>

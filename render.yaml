@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: nexus-bot-host
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --workers 1 --threads 4 --timeout 120 app:app
+    envVars:
+      - key: HOSTING_ADMIN_PASSWORD
+        sync: false
+      - key: HOSTING_SECRET_KEY
+        generateValue: true
+    plan: free

@@ -1,0 +1,59 @@
+{% extends "base.html" %}{% block title %}NEXUS HOST — Dashboard{% endblock %}
+{% block content %}
+<section class="hero">
+  <div><div class="eyebrow">PERSONAL TELEGRAM BOT CLOUD</div><h1>Control your <span>bot fleet.</span></h1>
+  <p>Upload, edit, deploy and monitor your Python Telegram bots from one premium workspace.</p></div>
+  <div class="hero-chip"><strong>{{ bot_count }}/{{ max_bots }}</strong><small>BOT SLOTS</small></div>
+</section>
+
+<section class="stats">
+  <div class="stat"><span>ACTIVE</span><b id="activeCount">0</b><small>running bots</small></div>
+  <div class="stat"><span>MEMORY</span><b id="memoryTotal">0 MB</b><small>live usage</small></div>
+  <div class="stat"><span>CPU</span><b id="cpuTotal">0%</b><small>combined usage</small></div>
+  <div class="stat"><span>STORAGE</span><b id="storageTotal">0 MB</b><small>bot files</small></div>
+</section>
+
+<section class="toolbar">
+  <div><h2>Your bots</h2><p>Each bot can have its own code, dependencies and process.</p></div>
+  <form class="create-form" method="post" action="{{ url_for('create_bot') }}">
+    <input name="name" maxlength="48" placeholder="New bot name…" required>
+    <button class="primary">+ CREATE BOT</button>
+  </form>
+</section>
+
+<div class="bot-grid">
+{% for item in bots %}
+{% set b=item.row %}{% set s=item.stats %}
+<article class="bot-card" data-bot-id="{{ b.id }}">
+  <div class="card-top">
+    <div class="bot-icon">⌁</div>
+    <div class="bot-title"><h3>{{ b.name }}</h3><span>{{ b.folder }}</span></div>
+    <div class="status {{ 'online' if s.running else 'offline' }}"><i></i>{{ 'RUNNING' if s.running else 'STOPPED' }}</div>
+  </div>
+  <div class="file-pills"><span>⌁ bot.py</span><span>▤ requirements.txt</span></div>
+  <div class="metrics">
+    <div><small>CPU</small><b class="cpu">{{ s.cpu }}%</b></div>
+    <div><small>RAM</small><b class="memory">{{ s.memory }} MB</b></div>
+    <div><small>PID</small><b class="pid">{{ s.pid or '—' }}</b></div>
+  </div>
+  <div class="card-actions">
+    <a class="action edit" href="{{ url_for('edit_bot',bot_id=b.id) }}">EDIT</a>
+    {% if s.running %}
+    <form method="post" action="{{ url_for('stop_bot',bot_id=b.id) }}"><button class="action stop">STOP</button></form>
+    {% else %}
+    <form method="post" action="{{ url_for('run_bot',bot_id=b.id) }}"><button class="action run">RUN</button></form>
+    {% endif %}
+    <form method="post" action="{{ url_for('delete_bot',bot_id=b.id) }}" onsubmit="return confirm('Delete this bot and its files?')"><button class="action delete">DELETE</button></form>
+  </div>
+  <button class="console-toggle" onclick="showLogs({{ b.id }}, '{{ b.name|replace("'","\\'") }}')">VIEW CONSOLE <span>↗</span></button>
+</article>
+{% else %}
+<div class="empty"><div>✦</div><h3>No bots yet</h3><p>Create your first bot slot, then upload <b>bot.py</b> and <b>requirements.txt</b>.</p></div>
+{% endfor %}
+</div>
+
+<div id="logModal" class="modal" hidden>
+  <div class="modal-box"><div class="modal-head"><div><span class="eyebrow">LIVE CONSOLE</span><h2 id="logTitle">Bot</h2></div><button onclick="closeLogs()">×</button></div>
+  <pre id="logBody">Loading…</pre></div>
+</div>
+{% endblock %}

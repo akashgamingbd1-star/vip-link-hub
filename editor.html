@@ -1,0 +1,31 @@
+{% extends "base.html" %}{% block title %}Edit {{ bot.name }} — NEXUS HOST{% endblock %}
+{% block content %}
+<div class="editor-head">
+  <div><a class="back" href="{{ url_for('dashboard') }}">← Dashboard</a><div class="eyebrow">BOT WORKSPACE</div><h1>{{ bot.name }}</h1><p>Large-screen editor · stop the bot before changing runtime files.</p></div>
+  <div class="status {{ 'online' if stats.running else 'offline' }}"><i></i>{{ 'RUNNING' if stats.running else 'STOPPED' }}</div>
+</div>
+
+<div class="editor-layout">
+<form method="post" class="editor-panel">
+  <div class="field"><label>BOT NAME</label><input name="name" value="{{ bot.name }}" maxlength="48" required></div>
+  <div class="code-tabs"><button type="button" class="tab active" onclick="switchEditor('code',this)">bot.py</button><button type="button" class="tab" onclick="switchEditor('req',this)">requirements.txt</button></div>
+  <div id="codePane" class="code-pane"><textarea name="bot_code" spellcheck="false">{{ code }}</textarea></div>
+  <div id="reqPane" class="code-pane" hidden><textarea name="requirements" spellcheck="false">{{ requirements }}</textarea></div>
+  <div class="editor-actions"><button class="primary" {% if stats.running %}disabled{% endif %}>SAVE CHANGES</button><span>Ctrl/⌘ + S supported by your browser form behavior.</span></div>
+</form>
+
+<aside class="side-panel">
+  <div class="side-title">FILE UPLOAD</div>
+  <form method="post" enctype="multipart/form-data" action="{{ url_for('upload_files',bot_id=bot.id) }}">
+    <label class="upload-box"><b>01 · bot.py</b><span>Choose Python file</span><input type="file" name="bot_file" accept=".py"></label>
+    <label class="upload-box"><b>02 · requirements.txt</b><span>Choose dependency file</span><input type="file" name="req_file" accept=".txt"></label>
+    <button class="secondary wide">UPLOAD 2 FILES</button>
+  </form>
+  <div class="side-title metrics-title">LIVE METRICS</div>
+  <div class="big-metric"><small>CPU</small><b>{{ stats.cpu }}%</b></div>
+  <div class="big-metric"><small>MEMORY</small><b>{{ stats.memory }} MB</b></div>
+  <div class="big-metric"><small>STORAGE</small><b>{{ stats.storage }} MB</b></div>
+  <div class="side-note">Auto log capture is enabled. Dependencies are isolated per bot in <code>.venv</code>.</div>
+</aside>
+</div>
+{% endblock %}
