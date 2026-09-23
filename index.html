@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NovaHost — Telegram Bot Hosting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#070914;--panel:#0e1222;--panel2:#12182b;--text:#f5f7ff;--muted:#9aa4bd;--line:#222a42;--a:#6d7cff;--b:#19d3ff;--ok:#34d399;--danger:#fb7185}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#18204d 0,transparent 32%),radial-gradient(circle at 90% 15%,#063d50 0,transparent 28%),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:42px 42px}
+.nav{height:72px;border-bottom:1px solid rgba(255,255,255,.07);backdrop-filter:blur(18px);background:rgba(7,9,20,.65);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;position:sticky;top:0;z-index:5}.brand{font-weight:800;font-size:20px;letter-spacing:-.5px}.brand i{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--a),var(--b));margin-right:9px;font-style:normal;box-shadow:0 0 28px #5065ff55}.nav button,.btn{border:0;border-radius:12px;padding:11px 16px;color:white;background:linear-gradient(135deg,var(--a),#8b5cf6);font-weight:700;cursor:pointer;box-shadow:0 10px 30px #5b63ff25}.ghost{background:#ffffff08!important;border:1px solid var(--line)!important;box-shadow:none!important}
+.wrap{width:min(1180px,92%);margin:auto}.hero{padding:78px 0 42px;text-align:center}.pill{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff14;background:#ffffff08;padding:8px 12px;border-radius:99px;color:#b9c4df;font-size:12px}.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 15px var(--ok)}h1{font-size:clamp(40px,7vw,78px);line-height:.98;letter-spacing:-4px;margin:22px auto 18px;max-width:900px}h1 span{background:linear-gradient(90deg,#fff,var(--b),#a78bfa);-webkit-background-clip:text;color:transparent}p{color:var(--muted);line-height:1.7}.hero p{max-width:700px;margin:auto}.actions{display:flex;justify-content:center;gap:10px;margin:28px 0 0;flex-wrap:wrap}
+.section{padding:35px 0}.section h2{font-size:30px;letter-spacing:-1px;margin:0 0 8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:linear-gradient(180deg,#11172a,#0b1020);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 60px #0005;position:relative;overflow:hidden}.card:after{content:"";position:absolute;width:160px;height:160px;right:-80px;top:-90px;border-radius:50%;background:#6d7cff18;filter:blur(3px)}.price{font-size:38px;font-weight:800;margin:18px 0}.features{list-style:none;padding:0;color:#c1c9dc;line-height:2}.features li:before{content:"✓";color:var(--ok);margin-right:9px}.card .btn{width:100%;margin-top:8px}.tag{font-size:11px;padding:5px 8px;border-radius:8px;background:#6d7cff18;color:#aeb8ff;border:1px solid #6d7cff30}.dash{display:none;padding:35px 0 70px}.dash.on{display:block}.tabs{display:flex;gap:8px;margin:18px 0}.tab{background:#ffffff06;border:1px solid var(--line);color:#aeb7cc;padding:10px 14px;border-radius:11px;cursor:pointer}.tab.active{background:#6d7cff20;color:#fff;border-color:#6d7cff55}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat b{display:block;font-size:28px;margin-top:7px}.table{overflow:auto;border:1px solid var(--line);border-radius:16px}.table table{width:100%;border-collapse:collapse;min-width:650px}.table th,.table td{text-align:left;padding:13px;border-bottom:1px solid #ffffff08;font-size:13px}.modal{display:none;position:fixed;inset:0;background:#0009;backdrop-filter:blur(8px);z-index:20;align-items:center;justify-content:center;padding:20px}.modal.on{display:flex}.modalbox{width:min(460px,100%);background:#0d1222;border:1px solid var(--line);border-radius:22px;padding:24px}.modalbox input{width:100%;padding:13px;margin:7px 0;background:#080c18;border:1px solid var(--line);border-radius:11px;color:#fff;outline:none}.close{float:right;background:none;border:0;color:#aaa;font-size:22px;cursor:pointer}.notice{padding:12px;border-radius:12px;background:#6d7cff12;border:1px solid #6d7cff25;color:#b9c3db;font-size:13px;margin-top:12px}.admin{display:none}.admin.on{display:block}.footer{padding:45px 0;border-top:1px solid #ffffff0b;color:#69738b;font-size:12px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}h1{letter-spacing:-2.5px}.nav{padding:0 4%}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="brand"><i>✦</i> NovaHost</div>
+  <div style="display:flex;gap:8px"><button class="ghost" onclick="openLogin()">UID Login</button><button onclick="openRegister()">Create account</button></div>
+</nav>
+
+<main id="landing">
+<section class="hero wrap">
+  <div class="pill"><span class="dot"></span> Telegram Bot Hosting • Premium Control Panel</div>
+  <h1>Deploy your Telegram bots with <span>speed & control.</span></h1>
+  <p>A modern personal hosting platform with UID accounts, referrals, package management and a dedicated admin console.</p>
+  <div class="actions"><button class="btn" onclick="openRegister()">Get started</button><button class="btn ghost" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">View packages</button></div>
+</section>
+<section class="section wrap" id="plans">
+  <h2>Hosting packages</h2><p>Clean pricing cards ready for your future payment gateway.</p>
+  <div id="packages" class="grid"></div>
+</section>
+<section class="section wrap">
+  <div class="card"><span class="tag">Referral system</span><h2 style="margin-top:14px">Invite users. Grow your hosting community.</h2><p>Every account gets a unique referral URL. The backend stores referrer relationships so you can add your commission rules later.</p></div>
+</section>
+</main>
+
+<section class="dash wrap" id="dashboard">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><span class="tag">USER PANEL</span><h2 id="hello">Dashboard</h2><p id="uidline"></p></div><button class="ghost btn" onclick="logout()">Logout</button></div>
+  <div class="stats" style="margin-top:20px">
+    <div class="card stat"><small>Balance</small><b id="balance">৳0</b></div>
+    <div class="card stat"><small>Referral users</small><b id="refcount">0</b></div>
+    <div class="card stat"><small>My bots</small><b id="botcount">0</b></div>
+    <div class="card stat"><small>Referral link</small><button class="btn" onclick="copyRef()">Copy link</button></div>
+  </div>
+  <div class="tabs"><button class="tab active" onclick="showTab('bots',this)">My bots</button><button class="tab" onclick="showTab('refs',this)">Referrals</button></div>
+  <div id="bots" class="card"><h3>Deploy a bot</h3><div style="display:flex;gap:10px;flex-wrap:wrap"><input id="botname" placeholder="Bot name" style="flex:1;min-width:200px;padding:13px;background:#080c18;border:1px solid var(--line);border-radius:11px;color:#fff"><select id="botpackage" style="padding:13px;background:#080c18;border:1px solid var(--line);border-radius:11px;color:#fff"></select><button class="btn" onclick="createBot()">Create bot</button></div><div id="botlist" style="margin-top:16px"></div></div>
+  <div id="refs" class="card" style="display:none"><h3>Your referral link</h3><div class="notice" id="reflink"></div><div id="reflist" style="margin-top:15px"></div></div>
+</section>
+
+<section class="dash admin wrap" id="adminPanel">
+  <div style="display:flex;justify-content:space-between;align-items:center"><div><span class="tag">ADMIN CONSOLE</span><h2>Control Center</h2><p>Search UID, inspect users and manage orders.</p></div><button class="ghost btn" onclick="adminLogout()">Logout</button></div>
+  <div class="stats" style="margin-top:20px">
+    <div class="card stat"><small>Users</small><b id="ausers">0</b></div><div class="card stat"><small>Referrals</small><b id="arefs">0</b></div><div class="card stat"><small>Orders</small><b id="aorders">0</b></div><div class="card stat"><small>Bots</small><b id="abots">0</b></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>UID / user search</h3><div style="display:flex;gap:8px"><input id="userq" placeholder="Search UID or name" style="flex:1;padding:13px;background:#080c18;border:1px solid var(--line);border-radius:11px;color:#fff"><button class="btn" onclick="searchUsers()">Search</button></div><div id="userresults" style="margin-top:15px"></div></div>
+  <div class="card" style="margin-top:16px"><h3>Orders</h3><div class="table"><table><thead><tr><th>ID</th><th>User</th><th>Package</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody id="orders"></tbody></table></div></div>
+</section>
+
+<footer class="footer"><div class="wrap">NovaHost • Premium Telegram Bot Hosting UI • Replace demo payment/worker adapters with your production services before launch.</div></footer>
+
+<div class="modal" id="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><div id="modalbody"></div></div></div>
+
+<script>
+const $=s=>document.querySelector(s);
+async function api(url,opt={}){const r=await fetch(url,{headers:{'Content-Type':'application/json',...(opt.headers||{})},...opt});const d=await r.json();if(!r.ok)throw Error(d.error||'Request failed');return d}
+function openModal(html){$('#modalbody').innerHTML=html;$('#modal').classList.add('on')}function closeModal(){$('#modal').classList.remove('on')}
+function openRegister(){openModal(`<h2>Create account</h2><p>Your UID will be generated automatically.</p><input id="rname" placeholder="Your name"><input id="remail" placeholder="Email (optional)"><input id="rref" placeholder="Referral UID (optional)" value="${new URLSearchParams(location.search).get('ref')||''}"><button class="btn" style="width:100%;margin-top:8px" onclick="register()">Create account</button><div class="notice">This starter stores referral relationships server-side.</div>`)}
+function openLogin(){openModal(`<h2>UID Login</h2><p>Enter your account UID.</p><input id="luid" placeholder="e.g. U..."><button class="btn" style="width:100%;margin-top:8px" onclick="login()">Login</button><div class="notice">Admin uses the separate Admin Console route below.</div>`)}
+async function register(){try{const d=await api('/api/register',{method:'POST',body:JSON.stringify({name:$('#rname').value,email:$('#remail').value,ref:$('#rref').value})});closeModal();showDashboard(d.user)}catch(e){alert(e.message)}}
+async function login(){try{const d=await api('/api/login',{method:'POST',body:JSON.stringify({uid:$('#luid').value})});closeModal();showDashboard(d.user)}catch(e){alert(e.message)}}
+async function logout(){await api('/api/logout',{method:'POST'});location.reload()}
+async function showDashboard(){const d=await api('/api/me');$('#landing').style.display='none';$('#dashboard').classList.add('on');$('#hello').textContent='Welcome, '+d.user.name;$('#uidline').textContent='UID: '+d.user.uid;$('#balance').textContent='৳'+Number(d.user.balance).toFixed(2);$('#refcount').textContent=d.referrals.length;$('#botcount').textContent=d.bots.length;$('#reflink').textContent=location.origin+'/?ref='+d.user.uid;$('#reflist').innerHTML=d.referrals.length?d.referrals.map(x=>`<div class="notice">${x.name} • ${x.referred_uid}</div>`).join(''):'<p>No referrals yet.</p>';$('#botlist').innerHTML=d.bots.length?d.bots.map(x=>`<div class="notice">${x.name} — <b>${x.status}</b></div>`).join(''):'<p>No bots created yet.</p>';loadPackagesSelect(d.user)}
+function copyRef(){navigator.clipboard.writeText($('#reflink').textContent);alert('Referral link copied')}
+async function loadPackages(){const ps=await api('/api/packages');$('#packages').innerHTML=ps.map(p=>`<div class="card"><span class="tag">${p.name}</span><div class="price">৳${p.price}<small style="font-size:13px;color:#8791a8"> / plan</small></div><p>${p.description}</p><ul class="features"><li>${p.ram} RAM</li><li>${p.cpu}</li><li>${p.storage}</li><li>${p.bots} bot slot(s)</li></ul><button class="btn" onclick="openRegister()">Choose ${p.name}</button></div>`).join('');return ps}
+async function loadPackagesSelect(){const ps=await api('/api/packages');$('#botpackage').innerHTML=ps.map(p=>`<option value="${p.id}">${p.name} — ৳${p.price}</option>`).join('')}
+async function createBot(){try{const d=await api('/api/bots',{method:'POST',body:JSON.stringify({name:$('#botname').value,packageId:$('#botpackage').value})});alert(d.message);showDashboard()}catch(e){alert(e.message)}}
+function showTab(id,el){['bots','refs'].forEach(x=>$('#'+x).style.display=x===id?'block':'none');document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));el.classList.add('active')}
+function openAdmin(){openModal(`<h2>Admin Console</h2><p>Secure admin login.</p><input id="au" placeholder="Username"><input id="ap" type="password" placeholder="Password"><button class="btn" style="width:100%;margin-top:8px" onclick="adminLogin()">Enter console</button>`)}
+async function adminLogin(){try{await api('/api/admin/login',{method:'POST',body:JSON.stringify({username:$('#au').value,password:$('#ap').value})});closeModal();showAdmin()}catch(e){alert(e.message)}}
+async function showAdmin(){const s=await api('/api/admin/stats');$('#landing').style.display='none';$('#dashboard').classList.remove('on');$('#adminPanel').classList.add('on');$('#ausers').textContent=s.users;$('#arefs').textContent=s.referrals;$('#aorders').textContent=s.orders;$('#abots').textContent=s.bots;searchUsers();loadOrders()}
+async function searchUsers(){try{const us=await api('/api/admin/users?q='+encodeURIComponent($('#userq').value));$('#userresults').innerHTML=us.length?us.map(u=>`<div class="notice" style="display:flex;justify-content:space-between;gap:10px;align-items:center"><span><b>${u.name}</b><br><small>${u.uid} • balance ৳${u.balance}</small></span><button class="ghost tab" onclick="editUser('${u.uid}','${u.name.replace(/'/g,"\\'")}',${u.balance})">Edit</button></div>`).join(''):'<p>No users found.</p>'}catch(e){alert(e.message)}}
+function editUser(uid,name,balance){openModal(`<h2>Edit user</h2><p>${uid}</p><input id="en" value="${name}"><input id="eb" type="number" value="${balance}"><button class="btn" style="width:100%;margin-top:8px" onclick="saveUser('${uid}')">Save</button>`)}
+async function saveUser(uid){await api('/api/admin/users/'+uid,{method:'PATCH',body:JSON.stringify({name:$('#en').value,balance:$('#eb').value})});closeModal();searchUsers()}
+async function loadOrders(){const os=await api('/api/admin/orders');$('#orders').innerHTML=os.map(o=>`<tr><td>#${o.id}</td><td>${o.name||o.uid}</td><td>${o.package_name}</td><td>৳${o.amount}</td><td>${o.status}</td><td><button class="tab" onclick="setOrder(${o.id},'paid')">Paid</button> <button class="tab" onclick="setOrder(${o.id},'cancelled')">Cancel</button></td></tr>`).join('')}
+async function setOrder(id,status){await api('/api/admin/orders/'+id,{method:'PATCH',body:JSON.stringify({status})});loadOrders()}
+async function adminLogout(){await api('/api/admin/logout',{method:'POST'});location.reload()}
+loadPackages();
+if(location.pathname==='/admin'){openAdmin()}
+</script>
+</body></html>
